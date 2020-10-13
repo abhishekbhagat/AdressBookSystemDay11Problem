@@ -16,6 +16,20 @@ public class AddressBook {
 		searchContactByState("jharkhand");
 		getNumber_OfContactPersonsByState("jharkhand");
 		getNumber_OfContactPersonsByCity("dhanbad");
+		sortByName();
+	}
+
+	/**
+	 * uc11
+	 * 
+	 */
+	public static void sortByName() {
+		List<ContactPerson> contactPersonListSortedByName = contactPersonList.stream()
+				.sorted((ContactPerson c1, ContactPerson c2) -> c1.getFirstName().compareTo(c2.getFirstName()))
+				.collect(Collectors.toList());
+		for (ContactPerson contactPerson : contactPersonListSortedByName) {
+			showContactPerson(contactPerson);
+		}
 	}
 
 	/**
