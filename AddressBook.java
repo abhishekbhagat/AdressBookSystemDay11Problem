@@ -14,6 +14,28 @@ public class AddressBook {
 		addContactPerson();
 		searchContactByCity("dhanbad");
 		searchContactByState("jharkhand");
+		getNumber_OfContactPersonsByState("jharkhand");
+		getNumber_OfContactPersonsByCity("dhanbad");
+	}
+
+	/**
+	 * uc10
+	 * 
+	 * @param state
+	 */
+	public static void getNumber_OfContactPersonsByState(String state) {
+		System.out.println((int) contactPersonList.stream()
+				.filter(ContactPerson -> ContactPerson.getState().equals(state)).count());
+	}
+
+	/**
+	 * uc10
+	 * 
+	 * @param city
+	 */
+	public static void getNumber_OfContactPersonsByCity(String city) {
+		System.out.println(
+				(int) contactPersonList.stream().filter(ContactPerson -> ContactPerson.getCity().equals(city)).count());
 	}
 
 	/**
