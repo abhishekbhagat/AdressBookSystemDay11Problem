@@ -1,8 +1,10 @@
 package com.bridgelabz.problem;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 	private static HashSet<ContactPerson> contactPersonList = new HashSet<ContactPerson>();
@@ -10,10 +12,36 @@ public class AddressBook {
 	public static void main(String[] args) {
 		addContactPerson();
 		addContactPerson();
-		addContactPerson();
-		for (ContactPerson contactPerson : contactPersonList) {
+		searchContactByCity("dhanbad");
+		searchContactByState("jharkhand");
+	}
+
+	/**
+	 * uc8
+	 * 
+	 * @param city
+	 */
+	public static void searchContactByCity(String city) {
+		List<ContactPerson> contactPersonListByCity = contactPersonList.stream()
+				.filter(contactPerson -> contactPerson.getCity().equals(city)).collect(Collectors.toList());
+		for (ContactPerson contactPerson : contactPersonListByCity) {
 			showContactPerson(contactPerson);
 		}
+
+	}
+
+	/**
+	 * uc8
+	 * 
+	 * @param state
+	 */
+	public static void searchContactByState(String state) {
+		List<ContactPerson> contactPersonListByState = contactPersonList.stream()
+				.filter(contactPerson -> contactPerson.getState().equals(state)).collect(Collectors.toList());
+		for (ContactPerson contactPerson : contactPersonListByState) {
+			showContactPerson(contactPerson);
+		}
+
 	}
 
 	/**
@@ -50,18 +78,17 @@ public class AddressBook {
 				for (ContactPerson contactPersonInList : contactPersonList) {
 					if (contactPersonInList.getFirstName().equals(contactPerson.getFirstName())
 							&& contactPersonInList.getLastName().equals(contactPerson.getLastName()))
-					return true;
+						return true;
 				}
 				return false;
 			};
 			if (contactPersonList.stream().anyMatch(isDuplicate)) {
-			} 
-			else {
+			} else {
 				contactPersonList.add(contactPerson);
 			}
 		}
-		scannerObj.close();
 	}
+
 	public static void showContactPerson(ContactPerson contactPerson) {
 		System.out.println(contactPerson.getFirstName());
 		System.out.println(contactPerson.getLastName());
