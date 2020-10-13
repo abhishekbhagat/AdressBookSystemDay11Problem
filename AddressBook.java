@@ -20,6 +20,41 @@ public class AddressBook {
 	}
 
 	/**
+	 * uc12
+	 * 
+	 */
+	public static void sortByCity() {
+		List<ContactPerson> contactPersonListSortedByCity = contactPersonList.stream()
+				.sorted((ContactPerson c1, ContactPerson c2) -> c1.getCity().compareTo(c2.getCity()))
+				.collect(Collectors.toList());
+		for (ContactPerson contactPerson : contactPersonListSortedByCity) {
+			showContactPerson(contactPerson);
+		}
+	}
+
+	/**
+	 * uc12
+	 * 
+	 */
+	public static void sortByState() {
+		List<ContactPerson> contactPersonListSortedByState = contactPersonList.stream()
+				.sorted((ContactPerson c1, ContactPerson c2) -> c1.getState().compareTo(c2.getState()))
+				.collect(Collectors.toList());
+		for (ContactPerson contactPerson : contactPersonListSortedByState) {
+			showContactPerson(contactPerson);
+		}
+	}
+
+	public static void sortByZip() {
+		List<ContactPerson> contactPersonListSortedByZip = contactPersonList.stream()
+				.sorted((ContactPerson c1, ContactPerson c2) -> c1.getZip().compareTo(c2.getZip()))
+				.collect(Collectors.toList());
+		for (ContactPerson contactPerson : contactPersonListSortedByZip) {
+			showContactPerson(contactPerson);
+		}
+	}
+
+	/**
 	 * uc11
 	 * 
 	 */

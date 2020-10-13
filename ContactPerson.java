@@ -99,4 +99,12 @@ public class ContactPerson {
 				&& contactPerson.getLastName().equals(this.getLastName()));
 	}
 
+	@Override
+	public String toString() {
+		return "ContactPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
+				+ city + ", state=" + state + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email
+				+ "]";
+	}
+	
+
 }
